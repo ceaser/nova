@@ -61,7 +61,6 @@ if node.has_key?(:floating) and node["nova"]["network"]["floating"].has_key?(:ip
   execute "nova-manage floating create" do
     command "nova-manage floating create --ip_range=#{node["nova"]["network"]["floating"]["ipv4_cidr"]}"
     action :run
-    not_if "nova-manage floating list | grep #{node["nova"]["network"]["floating"]["ipv4_cidr"]}"
   end
 end
 
